@@ -51,7 +51,7 @@ const createPopupText = (wc: WC): string => {
   <body>
     <header>
       <h1>
-        WC<span id="red">-</span>
+        WC<span id="hyphen">-</span>
         <span id="radar">Radar</span> 
       </h1>
     </header>
@@ -102,12 +102,16 @@ header h1:hover {
   filter: invert(100%)
 }
 
+Header h1:hover #hyphen {
+  rotate: 360deg;
+}
+
 #radar {
   color: var(--title-color-2);
 }
 
 main {
-  height: 90.1vh;
+  height: 90.5vh;
   margin-top: 1rem;
   display: flex;
   flex-direction: row;
@@ -159,7 +163,7 @@ main {
   font-size: 1.5rem;
   color: var(--text-color);
   margin: 0;
-  padding-left: 8px;
+  padding: 0 1rem;
   text-align: justify;
   border-left: solid 3px var(--title-color);
 }
@@ -180,6 +184,11 @@ img {
 
 #red {
   color: red;
+}
+
+#hyphen {
+  color: red;
+  transition: 0.3s;
 }
 
 .big {
