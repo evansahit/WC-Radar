@@ -52,7 +52,7 @@ const createPopupText = (wc: WC): string => {
     <header>
       <h1>
         WC<span id="hyphen">-</span>
-        <span id="radar">Radar</span> test
+        <span id="radar">Radar</span>
       </h1>
     </header>
 
