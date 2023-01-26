@@ -48,7 +48,7 @@ const createPopupText = (wc: WC): string => {
 </script>
 
 <template>
-  <body>
+  <div class="container">
     <header>
       <h1>
         WC<span id="hyphen">-</span>
@@ -59,16 +59,17 @@ const createPopupText = (wc: WC): string => {
     <main>
       <div class="description-container">
         <div class="description-title">
-          <div class="xxx">
+          <div id="xxx">
             XXX
           </div>
-          <p>Op de kaart hiernaast zijn <span class="accent">wc's</span> in <span id="red">Amsterdam</span> te zien.</p>
+          <p class="mobile-description-head">Op deze kaart zijn <span class="accent">wc's</span> in <span id="red">Amsterdam</span> te zien.</p>
+          <p class="desktop-description-head">Op de kaart hiernaast zijn <span class="accent">wc's</span> in <span id="red">Amsterdam</span> te zien.</p>
         </div>
         <p class="description-sub">Click op een <span class="accent">wc</span> voor meer info!</p>
         <div class="img-container">
           <img src="@/assets/images/arrow.png" alt="image of a drawn arrow">
         </div>
-        <p class="description-text">
+        <p class="desktop-description-text">
           <span class="big">H</span>et komt wel voor dat je in de stad loopt en opeens dringend naar de wc moet, maar waar? In die moment heb je 
           haast en is het moeilijk te focussen, waar was er een wc alweer? Misschien is een openbare wc ver weg, dan maar 
           naar een café of restaurant dat in dezelfde straat zit, maar kan ik zomaar de wc gebruiken of moet ik eerst iets 
@@ -77,15 +78,23 @@ const createPopupText = (wc: WC): string => {
         </p>
       </div>
       <div id="map"></div>
+      <p class="mobile-description-text">
+          <span class="big">H</span>et komt wel voor dat je in de stad loopt en opeens dringend naar de wc moet, maar waar? In die moment heb je 
+          haast en is het moeilijk te focussen, waar was er een wc alweer? Misschien is een openbare wc ver weg, dan maar 
+          naar een café of restaurant dat in dezelfde straat zit, maar kan ik zomaar de wc gebruiken of moet ik eerst iets 
+          kopen? Of moet ik voor de wc betalen? Worden de wc’s regelmatig gereinigd? Al de bovengenoemde informatie wil ik 
+          verzamelen en overzichtelijk weergeven aan iedereen.
+        </p>
     </main>
-  </body>
+  </div>
 </template>
 
 <style scoped>
-body {
+
+.container {
   background: rgb(51,1,70);
   background: linear-gradient(0deg, rgba(51,1,70,1) 0%, rgba(43,0,131,1) 100%);
-  padding: 0 2rem;
+  min-width: 385px;
 }
 
 header h1 {
@@ -93,7 +102,7 @@ header h1 {
   font-size: 3rem;
   color: var(--title-color);
   font-weight: bolder;
-  margin: 0;
+  margin: 0 1.6rem;
   padding-top: 1rem;
   transition: 0.3s;
 }
@@ -111,64 +120,52 @@ Header h1:hover #hyphen {
 }
 
 main {
-  height: 90.5vh;
-  margin-top: 1rem;
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
   cursor: default;
 }
 
 .description-container {
-  display: flex;
-  flex-direction: column;
-  width: 40%;
-  padding-top: 5rem;
-  margin-right: 1rem;
-}
-
-.xxx {
-  font-family: Acme-Regular;
-  font-size: 2.5rem;
-  font-weight: bolder;
-  color: red;
-  writing-mode: vertical-rl;
-  text-orientation: upright;
+  margin: 1rem 1rem 0 1rem;
 }
 
 .description-title {
   display: flex;
   flex-direction: row;
   font-family: Acme-Regular;
-  font-size: 3.5rem;
   font-weight: bolder;
   color: var(--text-color);
 }
 
-.description-title p {
-  padding: 0;
-  margin: 0;
+#xxx {
+  font-size: 2rem;
+  font-weight: bolder;
+  color: red;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  letter-spacing: -1rem;
+}
+
+.mobile-description-head{
+  font-size: 2.1rem;
+}
+
+.desktop-description-head {
+  display: none;
 }
 
 .description-sub {
   font-family: Acme-Regular;
   font-size: 1.8rem;
   color: var(--text-color);
-  padding: 0;
-  margin: 0 0 0 3.2rem;
-}
-
-.description-text {
-  font-family: Acme-Regular;
-  font-size: 1.5rem;
-  color: var(--text-color);
-  margin: 0;
-  padding: 0 1rem;
-  text-align: justify;
-  border-left: solid 3px var(--title-color);
+  margin: 1rem 0;
+  text-align: center;
 }
 
 img {
+  display: none;
   filter: invert(100%);
   rotate: 146deg;
   transform: scaleX(-1);
@@ -176,6 +173,20 @@ img {
   height: 13rem;
   margin-left: 28rem;
   margin-top: -2rem;
+}
+
+.mobile-description-text {
+  font-family: Acme-Regular;
+  font-size: 1.5rem;
+  color: var(--text-color);
+  margin: 1rem;
+  padding: 0 1rem;
+  text-align: justify;
+  border-top: solid 1px rgba(76, 201, 240, 0.6);
+}
+
+.desktop-description-text {
+  display: none;
 }
 
 .accent {
@@ -196,9 +207,160 @@ img {
 }
 
 #map {
-  height: 50rem;
-  width: 60rem;
-  border-radius: 3px;
-  border: solid 3px var(--title-color);
+  height: 40rem;
+  border-top: solid 2px var(--title-color);
+  border-bottom: solid 2px var(--title-color);
+}
+
+@media only screen and (min-width: 666px) {
+  .description-title {
+    align-items: center;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .mobile-description-head{
+    font-size: 3rem;
+    margin-top: 0.6rem;
+  }
+
+  .description-title{
+    align-items: center;
+  }
+
+  #xxx {
+    font-size: 3rem;
+    margin-left: 8rem;
+  }
+
+  .description-sub {
+    padding: 0.5rem 0;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .mobile-description-head{
+    display: none;
+  }
+  
+  .mobile-description-text {
+    display: none;
+  }
+  
+  main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 100vh;
+    max-height: 100%;
+  }
+
+  .description-container {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin: 0;
+  }
+  
+  .description-title {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .desktop-description-head{
+    display: block;
+    font-size: 3rem;
+  }
+  
+  #xxx {
+    font-size: 4rem;
+    letter-spacing: -1.5rem;
+    margin-left: 0;
+  }
+
+  .description-sub {
+    text-align: start;
+    padding: 0;
+    margin: 1rem 0 0 3rem;
+
+  }
+
+  .desktop-description-text{
+    display: block;
+    font-family: Acme-Regular;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    padding: 0 0 0 1rem;
+    text-align: justify;
+    border-left: solid 3px rgba(76, 201, 240, 0.6);
+  }
+
+  img {
+    display: block;
+    margin-left: 17rem;
+    margin-top: -3rem;
+    width: 9rem;
+    height: 10rem;
+  }
+
+  #map {
+    height: 46.5rem;
+    width: 30rem;
+    border-radius: 3px;
+    border: solid 3px var(--title-color);     
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  #map {
+    width: 40rem;
+  }
+
+  .description-container {
+    margin-top: 1rem;
+  }
+
+  .desktop-description-head {
+    font-size: 3rem;
+  }
+
+  img {
+    margin-left: 22rem;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  #map {
+    width: 50rem;
+  }
+
+  .desktop-description-head {
+    font-size: 3.5rem;
+  }
+
+  .description-sub {
+    margin: 1rem 0 0 5rem;
+  }
+
+  .desktop-description-text {
+    margin-top: 3.5rem;
+    padding-right: 1rem;
+  }
+
+  img {
+    width: 11rem;
+    margin-left: 26rem;
+  }
+}
+
+@media only screen and (min-width: 1500px) {
+  
+  .description-title {
+    margin-top: 1rem;
+  }
+
+  .desktop-description-text {
+    margin-top: 7rem;
+  }
 }
 </style>
