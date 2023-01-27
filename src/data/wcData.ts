@@ -52,6 +52,27 @@ const wcList: WC[] = [
     price: 1,
     isPublic: true,
   },
+  {
+    name: "Wc binnen Buersplein, Fietsenstalling",
+    lat: 52.374057,
+    lng: 4.895078,
+    price: 0.5,
+    isPublic: true,
+  },
+  {
+    name: "Wc de Kalverpassage",
+    lat: 52.36743700329051,
+    lng: 4.89223971519816,
+    price: 1,
+    isPublic: true,
+  },
+  {
+    name: "Krul urinoir op de Singel",
+    lat: 52.37314826774108,
+    lng: 4.889107004432091,
+    price: 1,
+    isPublic: true,
+  },
 ];
 
 wcList.forEach((wc) => {
