@@ -1,5 +1,9 @@
 # WC-Radar
+WC-Radar displays information about (public) restrooms in Amsterdam center. Here the locations and pricing information are displayed on a map.
+
 This project was part of a minor "Het internet is stuk, maar we gaan het repareren" (The internet is broken, but we're going to fix it) that I followed during my HBO-ICT bachelors at the Hogeschool van Amsterdam.
+
+We were assigned to create a project to benefit the digital commons where everyone can have access to this service. The idea is that other users also contribute to WC-Radar and add additional restrooms to the map.
 
 ## Tooling information (auto-generated)
 This template should help get you started developing with Vue 3 in Vite.
